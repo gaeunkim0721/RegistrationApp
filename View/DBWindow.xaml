@@ -4,9 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistrationApp.View"
+        xmlns:vm="clr-namespace:RegistrationApp.ViewModel"
         mc:Ignorable="d"
         Title="DBWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <vm:GroupsVM x:Key="vm"/>
+    </Window.Resources>
+    <DockPanel DataContext="{StaticResource vm}">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New Database"
+                          Command="{Binding NewDatabaseCommand}"/>
+                <MenuItem Header="New Group"
+                          Command="{Binding NewGroupCommand}"
+                          CommandParameter="{Binding SelectedDatabase}"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <ListView DockPanel.Dock="Left"
+                  Width="140"
+                  SelectedValue="{Binding SelectedDatabase, Mode=TwoWay}"
+                  ItemsSource="{Binding Databases}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView DockPanel.Dock="Left"
+                  Width="140"
+                  ItemsSource="{Binding Groups}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding UpdatedTime}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Content="Speech"
+                        Click="SpeechButton_Click"/>
+            </ToolBar>
+        </ToolBarTray>
+        <Grid/>
+    </DockPanel>
 </Window>

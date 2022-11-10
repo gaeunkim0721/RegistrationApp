@@ -1,12 +1,35 @@
-﻿using System.Drawing.Image;
-using System.Windows.Controls;
+﻿using SQLite;
+using System;
 
-namespace RegistrationApp.Models
+namespace RegistrationApp.Model
 {
-    internal class Group
+    public class Group
     {
+        [PrimaryKey, AutoIncrement]
+        public int GroupId { get; set; }
+        private int databaseId;
+        [Indexed]
+        public int DatabaseId
+        {
+            get { return databaseId; }
+            set
+            {
+                databaseId = value;
+            }
+        }
+        private DateTime createdTime;
+        public DateTime CreatedTime
+        {
+            get { return createdTime; }
+            set { createdTime = value; }
+        }
 
-
+        private DateTime updatedTime;
+        public DateTime UpdatedTime
+        {
+            get { return updatedTime; }
+            set { updatedTime = value; }
+        }
         private string timeStamp = "";
         public string TimeStamp { get { return timeStamp; } set { timeStamp = value; } }
 

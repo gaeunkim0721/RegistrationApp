@@ -61,7 +61,7 @@ namespace RegistrationApp.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RegistrationApp;V1.0.0.0;component/usercontrols/listviewitem.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/RegistrationApp;component/usercontrols/listviewitem.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UserControls\ListViewItem.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
