@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrationApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,9 @@ namespace RegistrationApp.View
     {
         public DBWindow()
         {
+          
             InitializeComponent();
+            
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -29,9 +32,22 @@ namespace RegistrationApp.View
             Application.Current.Shutdown();
         }
 
-        private void SpeechButton_Click(object sender, RoutedEventArgs e)
+        private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-
+            LineNotify linenotify = new LineNotify();
         }
+
+        private void contentRichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int amountOfCharacters = (new TextRange(contentRichTextBox.Document.ContentStart, contentRichTextBox.Document.ContentEnd)).Text.Length;
+
+            statusTextBlock.Text = $"Document length: {amountOfCharacters} characters";
+        }
+
+        private void boldButton_Click(object sender, RoutedEventArgs e)
+        {
+            contentRichTextBox.Selection.ApplyPropertyValue(Inline.FontWeightProperty, FontWeights.Bold);
+        }
+
     }
 }

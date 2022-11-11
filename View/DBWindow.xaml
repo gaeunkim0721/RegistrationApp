@@ -22,9 +22,15 @@
                 <MenuItem Header="Exit" Click="MenuItem_Click"/>
             </MenuItem>
         </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="statusTextBlock"/>
+            </StatusBarItem>
+            
+        </StatusBar>
         <ListView DockPanel.Dock="Left"
                   Width="140"
-                  SelectedValue="{Binding SelectedDatabase, Mode=TwoWay}"
+                  SelectedValue="{Binding SelectedDatabase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   ItemsSource="{Binding Databases}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -43,10 +49,21 @@
         </ListView>
             <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
-                <Button Content="Speech"
-                        Click="SpeechButton_Click"/>
+                <Button Content="Send"
+                        Click="SendButton_Click"/>
+                <Button x:Name="boldButton"
+                        Click="boldButton_Click"
+                        >
+                    <TextBlock Text="B"
+                               FontWeight="Bold"/>
+                </Button>
             </ToolBar>
         </ToolBarTray>
-        <Grid/>
+        <Grid>
+            <RichTextBox x:Name="contentRichTextBox"
+                         TextChanged="contentRichTextBox_TextChanged"
+                         
+                         />
+        </Grid>
     </DockPanel>
 </Window>
