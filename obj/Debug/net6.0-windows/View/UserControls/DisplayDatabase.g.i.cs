@@ -54,7 +54,7 @@ namespace RegistrationApp.View.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RegistrationApp;component/view/usercontrols/displaydatabase.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/RegistrationApp;V1.0.0.0;component/view/usercontrols/displaydatabase.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\UserControls\DisplayDatabase.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
