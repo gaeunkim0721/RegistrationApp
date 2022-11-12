@@ -117,3 +117,10 @@ C:\Users\User\source\repos\RegistrationApp\bin\Debug\net6.0-windows\runtimes\win
 C:\Users\User\source\repos\RegistrationApp\bin\Debug\net6.0-windows\runtimes\win10-arm64\native\Microsoft.CognitiveServices.Speech.extension.mas.dll
 C:\Users\User\source\repos\RegistrationApp\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\User\source\repos\RegistrationApp\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\User\source\repos\RegistrationApp\obj\Debug\net6.0-windows\View\UserControls\DisplayDatabase.g.cs
+C:\Users\User\source\repos\RegistrationApp\obj\Debug\net6.0-windows\View\UserControls\DisplayDatabase.baml
+C:\Users\User\source\repos\RegistrationApp\obj\Debug\net6.0-windows\View\UserControls\DisplayGroup.g.cs
+C:\Users\User\source\repos\RegistrationApp\obj\Debug\net6.0-windows\View\UserControls\DisplayGroup.baml
+C:\Users\User\source\repos\RegistrationApp\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\User\source\repos\RegistrationApp\obj\Debug\net6.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\User\source\repos\RegistrationApp\obj\Debug\net6.0-windows\RegistrationApp.csproj.ResolveComReference.cache

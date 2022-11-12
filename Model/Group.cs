@@ -361,5 +361,8 @@ namespace RegistrationApp.Model
             set { covidTest = value; }
         }
 
+        private string filelocation = "";
+        public string Filelocation { get { return filelocation; } set { filelocation = value; } }
+
     }
 }

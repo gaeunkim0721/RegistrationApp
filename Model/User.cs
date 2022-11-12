@@ -4,13 +4,16 @@ namespace RegistrationApp.Model
 {
     public class User
     {
-        [PrimaryKey, AutoIncrement]
         public int UserId { get; set; }
-        private string name="";
-        [MaxLength(50)]
+        private string username = "";
+        public string Username { get { return username; } set { username = value; } }
+        private string name = "";
         public string Name { get { return name; } set { name = value; } }
+        private string lastname = "";
+        public string Lastname { get { return lastname; } set { lastname = value; } }
         private string password = "";
-        [MaxLength(50)]
         public string Password { get { return password; } set { password = value; } }
+        private string confirmPassword = "";
+        public string ConfirmPassword { get { return confirmPassword; } set { confirmPassword = value; } }
     }
 }

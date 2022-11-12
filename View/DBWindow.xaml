@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistrationApp.View"
+        xmlns:uc="clr-namespace:RegistrationApp.View.UserControls"
         xmlns:vm="clr-namespace:RegistrationApp.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="DBWindow" Height="450" Width="800">
     <Window.Resources>
@@ -26,37 +28,51 @@
             <StatusBarItem>
                 <TextBlock x:Name="statusTextBlock"/>
             </StatusBarItem>
-            
+
         </StatusBar>
         <ListView DockPanel.Dock="Left"
+                  Background="MidnightBlue"
                   Width="140"
                   SelectedValue="{Binding SelectedDatabase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   ItemsSource="{Binding Databases}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
+                    <Grid>
+                    <uc:DisplayDatabase Database="{Binding}">
+                        <uc:DisplayDatabase.ContextMenu>
+                            <ContextMenu>
+                                    <MenuItem Header="Reset"
+                                          Command="{Binding Source={StaticResource vm}, Path=EditCommand}"/>
+                                </ContextMenu>
+                        </uc:DisplayDatabase.ContextMenu>
+                    </uc:DisplayDatabase>
+                        <TextBox Text="{Binding Id, Mode=TwoWay}" 
+                                 Visibility="{Binding Source={StaticResource vm}, Path=IsVisible}"/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding Source={StaticResource vm}, Path=EndEditingCommand}" CommandParameter="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <ListView DockPanel.Dock="Left"
                   Width="140"
+                  SelectedValue="{Binding SelectedGroup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   ItemsSource="{Binding Groups}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding UpdatedTime}"/>
+                    <uc:DisplayGroup Group="{Binding}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-            <ToolBarTray DockPanel.Dock="Top">
+        <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
                 <Button Content="Send"
                         Click="SendButton_Click"/>
-                <Button x:Name="boldButton"
-                        Click="boldButton_Click"
-                        >
-                    <TextBlock Text="B"
-                               FontWeight="Bold"/>
-                </Button>
+                <Button Content="Save"
+                        Click="SaveButton_Click"/>
             </ToolBar>
         </ToolBarTray>
         <Grid>

@@ -13,12 +13,24 @@
     <Compile Update="View\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\UserControls\DisplayDatabase.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\DisplayGroup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\DBWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\DisplayDatabase.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\DisplayGroup.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

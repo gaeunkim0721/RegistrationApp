@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\User\source\repos\RegistrationApp\App.xaml
-2-1373116052
+41582931069
 
-151659888365
-2031123226063
-View\DBWindow.xaml;View\LoginWindow.xaml;
+21205174415
+205-258779528
+View\DBWindow.xaml;View\LoginWindow.xaml;View\UserControls\DisplayDatabase.xaml;View\UserControls\DisplayGroup.xaml;
 
 False
 
