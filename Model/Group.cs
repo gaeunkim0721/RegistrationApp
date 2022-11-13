@@ -3,13 +3,17 @@ using System;
 
 namespace RegistrationApp.Model
 {
-    public class Group
+
+    public interface HasId
     {
-        [PrimaryKey, AutoIncrement]
+        public string Id { get; set; }
+    }
+
+    public class Group : HasId
+    {
         public int GroupId { get; set; }
-        private int databaseId;
-        [Indexed]
-        public int DatabaseId
+        private string databaseId;
+        public string DatabaseId
         {
             get { return databaseId; }
             set
@@ -364,5 +368,6 @@ namespace RegistrationApp.Model
         private string filelocation = "";
         public string Filelocation { get { return filelocation; } set { filelocation = value; } }
 
+        public string Id { get; set; }
     }
 }

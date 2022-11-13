@@ -13,8 +13,9 @@
         <vm:GroupsVM x:Key="vm"/>
     </Window.Resources>
     <DockPanel DataContext="{StaticResource vm}">
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
+        <Menu DockPanel.Dock="Top" Background="#FF3268C1">
+            <MenuItem Header="File"
+                  Foreground="Azure">
                 <MenuItem Header="New Database"
                           Command="{Binding NewDatabaseCommand}"/>
                 <MenuItem Header="New Group"
@@ -25,32 +26,36 @@
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem>
+            <StatusBarItem Background="#FF30335F"
+                  Foreground="Azure">
                 <TextBlock x:Name="statusTextBlock"/>
             </StatusBarItem>
 
         </StatusBar>
         <ListView DockPanel.Dock="Left"
-                  Background="MidnightBlue"
+                  Background="#FF103275"
                   Width="140"
+                  Foreground="Azure"
                   SelectedValue="{Binding SelectedDatabase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   ItemsSource="{Binding Databases}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                    <uc:DisplayDatabase Database="{Binding}">
-                        <uc:DisplayDatabase.ContextMenu>
-                            <ContextMenu>
+                        <uc:DisplayDatabase Database="{Binding}">
+                            <uc:DisplayDatabase.ContextMenu>
+                                <ContextMenu>
                                     <MenuItem Header="Reset"
                                           Command="{Binding Source={StaticResource vm}, Path=EditCommand}"/>
                                 </ContextMenu>
-                        </uc:DisplayDatabase.ContextMenu>
-                    </uc:DisplayDatabase>
-                        <TextBox Text="{Binding Id, Mode=TwoWay}" 
+                            </uc:DisplayDatabase.ContextMenu>
+                        </uc:DisplayDatabase>
+                        <TextBox Text="{Binding Name, Mode=TwoWay}" 
                                  Visibility="{Binding Source={StaticResource vm}, Path=IsVisible}"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="LostFocus">
-                                <i:InvokeCommandAction Command="{Binding Source={StaticResource vm}, Path=EndEditingCommand}" CommandParameter="{Binding}"/>
+                                <i:InvokeCommandAction Command="{Binding Source={StaticResource vm}, 
+                                    Path=EndEditingCommand}" 
+                                                       CommandParameter="{Binding}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Grid>
@@ -59,15 +64,16 @@
         </ListView>
         <ListView DockPanel.Dock="Left"
                   Width="140"
+                  Foreground="Azure"
                   SelectedValue="{Binding SelectedGroup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  ItemsSource="{Binding Groups}">
+                  ItemsSource="{Binding Groups}" Background="#FF4A51B5">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <uc:DisplayGroup Group="{Binding}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ToolBarTray DockPanel.Dock="Top">
+        <ToolBarTray DockPanel.Dock="Top" Background="#FF014592">
             <ToolBar>
                 <Button Content="Send"
                         Click="SendButton_Click"/>
@@ -76,9 +82,13 @@
             </ToolBar>
         </ToolBarTray>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="312*"/>
+                <ColumnDefinition Width="57*"/>
+                <ColumnDefinition Width="151*"/>
+            </Grid.ColumnDefinitions>
             <RichTextBox x:Name="contentRichTextBox"
-                         TextChanged="contentRichTextBox_TextChanged"
-                         
+                         TextChanged="contentRichTextBox_TextChanged" Background="#FFECF0FF" Grid.ColumnSpan="3"
                          />
         </Grid>
     </DockPanel>

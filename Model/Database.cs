@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace RegistrationApp.Model
 {
-    public class Database
+    public class Database : HasId
     {
-        private int id;
-        [PrimaryKey, AutoIncrement]
-        public int Id { get { return id; } set { id = value; } }
-        private int userId;
-        [Indexed]
-        public int UserId { get { return userId; } set { userId = value; } }
+        //private int id;
+        //public int Id { get { return id; } set { id = value; } }
+        private string userId;
+    
+        public string UserId { get { return userId; } set { userId = value; } }
 
         private string name;
 
@@ -27,5 +26,15 @@ namespace RegistrationApp.Model
             }
         }
 
+        private string date = "";
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
+
+        }
+
+        public string Id { get;
+            set; }
     }
 }

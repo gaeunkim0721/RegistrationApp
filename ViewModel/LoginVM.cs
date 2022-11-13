@@ -1,5 +1,6 @@
 ﻿using RegistrationApp.Model;
 using RegistrationApp.ViewModel.Commands;
+using RegistrationApp.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -140,7 +141,7 @@ namespace RegistrationApp.ViewModel
             }
         }
 
-
+        public event EventHandler Authenticated;
         public RegisterCommand RegisterCommand { get; set; }
         public LoginCommand LoginCommand { get; set; }
         public ShowRegisterCommand ShowRegisterCommand { get; set; }
@@ -172,14 +173,23 @@ namespace RegistrationApp.ViewModel
             }
         }
 
-        public void Login()
+        public async void Login()
         {
-            //TODO: login
+            bool result = await FirebaseAuthHelper.Login(User);
+            if (result) 
+            {
+                Authenticated?.Invoke(this, new EventArgs());
+            }
         }
 
-        public void Register()
+        public async void Register()
         {
-            //TODO: register
+            bool result = await FirebaseAuthHelper.Register(User);
+
+            if (result)
+            {
+
+            }
         }
         private void OnPropertyChanged(string propertyName)
         {

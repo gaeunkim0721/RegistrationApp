@@ -7,25 +7,38 @@
         xmlns:vm="clr-namespace:RegistrationApp.ViewModel"
         xmlns:local="clr-namespace:RegistrationApp.View"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="300">
+        
+                  Foreground="Azure"
+        Title="LoginWindow" Height="300" Width="300" Background="#FF2A32A9">
     <Window.Resources>
         <ResourceDictionary>
             <vm:LoginVM x:Key="vm"/>
         </ResourceDictionary>
     </Window.Resources>
     <Grid DataContext="{StaticResource vm}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="41*"/>
+        </Grid.ColumnDefinitions>
         <StackPanel Visibility="{Binding LoginVis}"
-                    Margin="10">
-            <TextBlock Text="Username"/>
-            <TextBox Text="{Binding User.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Text="Password"/>
-            <TextBox Text="{Binding User.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Command="{Binding LoginCommand}"
+                    Margin="10,10,10,10" Background="#FF1E5CD8" Grid.ColumnSpan="2">
+            <TextBlock Text="Email" Background="#FF3C82E0"
+                       
+                  Foreground="Azure"/>
+            <TextBox 
+                  Foreground="DodgerBlue" Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#FFB6CCE4"/>
+            <TextBlock Text="Password" Background="#FF3C82E0"
+                  Foreground="Azure"/>
+            <TextBox 
+                  Foreground="DodgerBlue" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#FFB6CCE4"/>
+            <Button 
+                  Foreground="DodgerBlue"
+                Command="{Binding LoginCommand}"
                     CommandParameter="{Binding User}"
                     Margin="0,5"
-                    Content="Login"/>
+                    Content="Login" Background="#FF9499E0"/>
             <TextBlock Text="Register"
-                       Foreground="DodgerBlue"
+                  Foreground="Azure"
                        TextDecorations="Underline">
                        <i:Interaction.Triggers>
                            <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -35,13 +48,13 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Visibility="{Binding RegisterVis}"
-                    Margin="10, 0">
-            <TextBlock Text="Username"/>
-            <TextBox Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    Margin="10,0,10,0" Grid.ColumnSpan="2">
+            <TextBlock Text="Email"/>
+            <TextBox Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="Name"/>
             <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="Lastname"/>
-            <TextBox Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding Lastname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="Password"/>
             <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="Confirm Password"/>

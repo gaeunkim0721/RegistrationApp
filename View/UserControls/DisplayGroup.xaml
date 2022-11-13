@@ -12,7 +12,7 @@
     </UserControl.Resources>
     <StackPanel DataContext="{StaticResource group}">
         <TextBlock
-                   Text="{Binding Name}"
+                   Text="{Binding CreatedTime}"
                    Foreground="Black"
                    Margin="15"
                    FontSize="20"

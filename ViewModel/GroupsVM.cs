@@ -79,20 +79,22 @@ namespace RegistrationApp.ViewModel
 
         }
 
-        public void CreateDatabase()
+        public async void CreateDatabase()
         {
             Database newDatabase = new Database
             {
-                Name = "Database"
+                Name = "Database",
+                UserId = App.UserId,
+                Date = DateTime.Today.ToString()
             };
 
-            DatabaseHelper.Insert(newDatabase);
+            await DatabaseHelper.Insert(newDatabase);
 
             GetDatabases();
         }
 
 
-        public void CreateGroup(int databaseId)
+        public async void CreateGroup(string databaseId)
         {
             Group newGroup = new Group
             {
@@ -101,25 +103,25 @@ namespace RegistrationApp.ViewModel
                 UpdatedTime = DateTime.Now
             };
 
-            DatabaseHelper.Insert(newGroup);
+            await DatabaseHelper.Insert(newGroup);
 
             GetGroups();
         }
 
-        public void GetDatabases()
+        public async void GetDatabases()
         {
-            var databases = DatabaseHelper.Read<Database>();
+            var databases = (await DatabaseHelper.Read<Database>()).Where(d => d.UserId == App.UserId).ToList();
             Databases.Clear();
             foreach (var database in databases)
             {
                 Databases.Add(database);
             }
         }
-        private void GetGroups()
+        private async void GetGroups()
         {
             if (SelectedDatabase != null)
             {
-                var groups = DatabaseHelper.Read<Group>().Where(g => g.DatabaseId == SelectedDatabase.Id).ToList();
+                var groups = (await DatabaseHelper.Read<Group>()).Where(g => g.DatabaseId == SelectedDatabase.Id).ToList();
                 Groups.Clear();
                 foreach (var group in groups)
                 {

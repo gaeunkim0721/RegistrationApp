@@ -10,13 +10,13 @@
     <UserControl.Resources>
         <model:Database x:Key="database"/>
     </UserControl.Resources>
-    <StackPanel DataContext="{StaticResource database}">
-        <TextBlock Text="{Binding Id}"
-                   Foreground="Black"
+    <Grid>
+        <TextBlock Text="{Binding Date}"
+                   Foreground="Azure"
                    Margin="15"
                    FontSize="20"
                    FontWeight="Bold"
                    VerticalAlignment="Center"
                    />
-    </StackPanel>
+        </Grid>
 </UserControl>
